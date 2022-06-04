@@ -46,10 +46,9 @@ $(document).ready(function() {
             graphDataY.push(item.latlng[1]);
             textArray.push(item.name + '<br>' + dynamicValue);
             itemSize.push(60);
-            
         });
-
     }
+
     const createRegionTableWithCountryCount = function (regions) {
         clearGraphDataLists();
         let count = 1;
@@ -118,17 +117,16 @@ $(document).ready(function() {
            acc[key].push(obj);
            return acc;
         }, {});
-     }
+    }
 
     const createUserOutput = function(data, userChoice) {
         if (userChoice.parent().attr('id') == 'country-select') {
             $('.countryTableBody').empty(); // Remove previous values
-            $('#countryTable').removeClass('d-none');
-            $('.userSelectedOption').text(userChoice.text());
+            $('#countryTable').removeClass('d-none'); // Show table
+            $('.userSelectedOption').text(userChoice.text()); // Update table header
 
             createCountryTable(data, userChoice);
             createGraph(userChoice.text());
-         
         } else {
             const regions = groupBy(data, 'region');
             $('.regionTableBody').empty();
